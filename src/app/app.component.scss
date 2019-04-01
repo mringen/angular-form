@@ -1,0 +1,22 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.image{
+  height: 45em;
+  margin: 0px;
+  background-size: cover;
+  width:auto;
+  background-image:url('./image/lights-stars.png');
+  background-position:50% 50%;
+}
+div, .form {
+  display: flex;
+  justify-content: center;
+  padding: 35px;
+    &.form {
+      background-color: lightblue;
+      width: 50vw;
+      border-radius: 20px;
+    }
+}

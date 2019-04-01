@@ -1,0 +1,85 @@
+<form [formGroup]="profileFormGroup">
+    <h3>Create you account</h3>
+    <div class="">
+    <label> Name:
+        <input type="text" formControlName="firstName"
+        [class.valid]="firstName.valid && (firstName.touched || firstName.dirty)"
+        [class.invalid]="firstName.invalid && (firstName.touched || firstName.dirty)"
+        >
+    </label>
+    <div class="errorMessage" *ngIf="firstName.errors?.required && (firstName.touched || firstName.dirty)">
+          skriv ett namn
+      </div>
+    </div>
+
+    <div>
+        <label> Surname:
+            <input type="text" formControlName="surname"
+            [class.valid]="surname.valid && (surname.touched || surname.dirty)"
+            [class.invalid]="surname.invalid && (surname.touched || surname.dirty)"
+            >
+        </label>
+        <div class="errorMessage" *ngIf="surname.errors?.required && (surname.touched || surname.dirty)">
+            skriv ditt efternamn
+        </div>
+    </div>
+
+    <div>
+        <label>
+            SocialsecurityNumber:
+            <input type="text" formControlName="socialsecurityNumber"
+            [class.valid]="socialsecurityNumber.valid && (socialsecurityNumber.touched || socialsecurityNumber.dirty)"
+            [class.invalid]="socialsecurityNumber.invalid && (socialsecurityNumber.touched || socialsecurityNumber.dirty)"
+            >
+        </label>
+        <div class="errorMessage" *ngIf="socialsecurityNumber.errors?.required && (socialsecurityNumber.touched || socialsecurityNumber.dirty)">
+            Skriv ett giltligt personnummer!
+        </div>
+    </div>
+
+
+    <div formGroupName="addressGroup">
+    <h3>Address</h3>
+    <div>
+        <label> Address:
+            <input type="text" formControlName="address"
+            [class.valid]="address.valid && (address.touched || address.dirty)"
+            [class.invalid]="address.invalid && (address.touched || address.dirty)"
+            >
+            <div class="errorMessage" *ngIf="socialsecurityNumber.errors?.required && (socialsecurityNumber.touched || socialsecurityNumber.dirty)">
+                Skriv din adress!
+            </div>
+        </label>
+    </div>
+
+
+    <div>
+        <label> ZipCode:
+            <input type="text" formControlName="zipCode"
+            [class.valid]="zipCode.valid && (zipCode.touched || zipCode.dirty)"
+            [class.invalid]="zipCode.invalid && (zipCode.touched || zipCode.dirty)"
+            >
+        </label>
+        <div class="errorMessage" *ngIf="zipCode.errors?.required && (zipCode.touched || zipCode.dirty)">
+            skriv en zipCode!
+
+        </div>
+    </div>
+
+    <div>
+        <label> Street:
+            <input type="text" formControlName="street"
+            [class.valid]="street.valid && (street.touched || street.dirty)"
+            [class.invalid]="street.invalid && (street.touched || street.dirty)"
+            >
+        </label>
+        <div class="errorMessage" *ngIf="street.errors?.required && (street.touched || street.dirty)">
+            skriv en gatuaddress!
+        </div>
+    </div>
+
+
+    </div>
+<button [disabled]="!profileFormGroup.value" (click)="checkButton()">Next</button>
+
+</form>

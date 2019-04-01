@@ -1,0 +1,25 @@
+body {
+  margin: 0px;
+}
+label {
+display: flex;
+flex-direction: column;
+align-content: center;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+input {
+  width: 25vw;
+  height: 3em;
+  margin-top: 4px;
+  border-radius: 20px 20px;
+  outline: none;
+  border-style: none;
+}
+button {
+  width: 7em;
+  height: 4em;
+  border-radius: 20px;
+}
+.valid { border: solid green 2px}
+.invalid { border: solid red 2px}
