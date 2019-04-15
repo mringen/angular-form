@@ -1,0 +1,47 @@
+<form [formGroup]="FormerEmployerGroup">
+
+<div class="">
+
+    <label>Employer:
+    <input type="text" formControlName="employer" placeholder="Employer"
+    [class.valid]="employer.valid && (employer.touched || employer.dirty)"
+    [class.invalid]="employer.invalid && (employer.touched || employer.dirty)">
+    </label>
+    <div *ngIf="employer.touched">
+        meddelande
+
+    </div>
+
+    <div class="startStopYear">
+        <div class="">
+            <label>Start year:
+                <input type="text" formControlName="startYear" placeholder="yyyy"
+                [class.valid]="startYear.valid && (startYear.touched || startYear.dirty)"
+                [class.invalid]="startYear.valid && (startYear.touched || startYear.dirty)">
+            </label>
+            <div class="timeLap" *ngIf="(startYear.errors?.required || startYear.errors?.min || startYear.errors?.max) && startYear.touched">
+                Giltligt år tal från 2010
+            </div>
+        </div>
+
+
+        <div class="">
+            <label>Stop year:
+                <input type="text" formControlName="stopYear" placeholder="yyyy"
+                [class.valid]="stopYear.valid && (stopYear.touched || stopYear.dirty)"
+                [class.invalid]="stopYear.valid && (stopYear.touched || stopYear.dirty)">
+            </label>
+            <div class="timeLap" *ngIf="(stopYear.errors?.required || stopYear.errors?.min || stopYear.errors?.max) && stopYear.touched">
+                Giltligt år tal från 2035
+            </div>
+        </div>
+
+    </div>
+
+    <label>Job description:
+    <textarea placeholder="Job description"></textarea>
+    </label>
+
+</div>
+
+</form>

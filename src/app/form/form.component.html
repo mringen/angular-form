@@ -1,85 +1,115 @@
 <form [formGroup]="profileFormGroup">
     <h3>Create you account</h3>
     <div class="">
-    <label> Name:
-        <input type="text" formControlName="firstName"
+    <label> Name:*
+        <input type="text" formControlName="firstName" placeholder="Name"
         [class.valid]="firstName.valid && (firstName.touched || firstName.dirty)"
         [class.invalid]="firstName.invalid && (firstName.touched || firstName.dirty)"
         >
     </label>
-    <div class="errorMessage" *ngIf="firstName.errors?.required && (firstName.touched || firstName.dirty)">
+    <div class="errorMessage" *ngIf="(firstName.errors?.required || firstName.errors?.minlength) && firstName.touched">
           skriv ett namn
       </div>
     </div>
 
     <div>
-        <label> Surname:
-            <input type="text" formControlName="surname"
+        <label> Surname:*
+            <input type="text" formControlName="surname" placeholder="Surname"
             [class.valid]="surname.valid && (surname.touched || surname.dirty)"
             [class.invalid]="surname.invalid && (surname.touched || surname.dirty)"
             >
         </label>
-        <div class="errorMessage" *ngIf="surname.errors?.required && (surname.touched || surname.dirty)">
+        <div class="errorMessage" *ngIf="(surname.errors?.required || surname.errors?.minlength) && surname.touched">
             skriv ditt efternamn
         </div>
     </div>
 
-    <div>
-        <label>
-            SocialsecurityNumber:
-            <input type="text" formControlName="socialsecurityNumber"
-            [class.valid]="socialsecurityNumber.valid && (socialsecurityNumber.touched || socialsecurityNumber.dirty)"
-            [class.invalid]="socialsecurityNumber.invalid && (socialsecurityNumber.touched || socialsecurityNumber.dirty)"
-            >
-        </label>
-        <div class="errorMessage" *ngIf="socialsecurityNumber.errors?.required && (socialsecurityNumber.touched || socialsecurityNumber.dirty)">
-            Skriv ett giltligt personnummer!
-        </div>
-    </div>
-
-
     <div formGroupName="addressGroup">
     <h3>Address</h3>
     <div>
-        <label> Address:
-            <input type="text" formControlName="address"
+        <label> Address:*
+            <input type="text" formControlName="address" placeholder="Address"
             [class.valid]="address.valid && (address.touched || address.dirty)"
             [class.invalid]="address.invalid && (address.touched || address.dirty)"
             >
-            <div class="errorMessage" *ngIf="socialsecurityNumber.errors?.required && (socialsecurityNumber.touched || socialsecurityNumber.dirty)">
+            <div class="errorMessage" *ngIf="(address.errors?.required || address.errors?.minlength) && address.touched">
                 Skriv din adress!
             </div>
         </label>
     </div>
 
-
     <div>
-        <label> ZipCode:
-            <input type="text" formControlName="zipCode"
+        <label> ZipCode:*
+            <input type="text" formControlName="zipCode" placeholder="42254"
             [class.valid]="zipCode.valid && (zipCode.touched || zipCode.dirty)"
             [class.invalid]="zipCode.invalid && (zipCode.touched || zipCode.dirty)"
             >
         </label>
-        <div class="errorMessage" *ngIf="zipCode.errors?.required && (zipCode.touched || zipCode.dirty)">
+        <div class="errorMessage" *ngIf="(zipCode.errors?.required || zipCode.errors?.pattern) && zipCode.touched">
             skriv en zipCode!
 
         </div>
     </div>
+</div>
+
+<div>
+    <label> Description:
+        <textarea type="text" formControlName="description" placeholder="Short description about you"
+        [class.valid]="description.valid && (description.touched || description.dirty)"
+        [class.invalid]="description.invalid && (description.touched || description.dirty)"
+        >
+        </textarea>
+    </label>
+    <div class="errorMessage" *ngIf="(description.errors?.required || description.errors?.length) && description.touched">
+        You have to write min 20 letter
+    </div>
+    </div>
 
     <div>
-        <label> Street:
-            <input type="text" formControlName="street"
-            [class.valid]="street.valid && (street.touched || street.dirty)"
-            [class.invalid]="street.invalid && (street.touched || street.dirty)"
+        <label>Education:
+            <input type="text" formControlName="education" placeholder="Education"
+            [class.valid]="education.valid && (education.touched || education.dirty)"
+            [class.invalid]="education.invalid && (education.touched || education.dirty)"
             >
         </label>
-        <div class="errorMessage" *ngIf="street.errors?.required && (street.touched || street.dirty)">
-            skriv en gatuaddress!
+
+        <div *ngIf="education.valid">
+            <label>Graduation year*
+                <input type="text" formControlName="graduationYear" placeholder="yyyy"
+                [class.valid]="graduationYear.valid && (graduationYear.touched || graduationYear.dirty)"
+                [class.invalid]="graduationYear.invalid && (graduationYear.touched || graduationYear.dirty)">
+            </label>
+        </div>
+
+        <div class="errorMessage" *ngIf="(graduationYear.errors?.required || graduationYear.errors?.length) && graduationYear.touched">
+            Du måste skriva "yyyy"
         </div>
     </div>
 
+    <div>
+        <label> <p>Qualification:</p>
+            <div class="qualification" *ngFor="let qualification of listOfQualification">
+            {{qualification.language}} Your level:
+                <div class="spanRating">
+                    <span *ngFor="let rating of ratingValue" (click)="showQualification(qualification.language, rating)">
+                        <span [ngClass]="{'markedRating': markedUserRating(qualification.rating, rating)}">{{ rating }}</span>
+                    </span>
 
+                </div>
+             </div>
+             <p>1 beginner, 2 good, 3 moderate, 4 excelent, 5 professional</p>
+        </label>
     </div>
-<button [disabled]="!profileFormGroup.value" (click)="checkButton()">Next</button>
 
 </form>
+
+<app-former-employer
+*ngFor="let employerList of employersList" let i = index>
+
+</app-former-employer>
+<div class="">
+    <div class="addNewEmployer" (click)="addNewEmployer()">+ add new employer</div>
+</div>
+
+
+<button [disabled]="!profileFormGroup.value" (click)="checkButton()">Next</button>

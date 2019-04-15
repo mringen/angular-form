@@ -3,17 +3,17 @@ body {
   padding: 0px;
 }
 .image{
-  height: 45em;
-  margin: 0px;
-  background-size: cover;
-  width:auto;
   background-image:url('./image/lights-stars.png');
-  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
 }
 div, .form {
   display: flex;
   justify-content: center;
   padding: 35px;
+  height: auto;
     &.form {
       background-color: lightblue;
       width: 50vw;

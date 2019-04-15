@@ -9,17 +9,64 @@ flex-wrap: wrap;
 margin-bottom: 20px;
 }
 input {
-  width: 25vw;
+  width: 40vw;
   height: 3em;
   margin-top: 4px;
   border-radius: 20px 20px;
   outline: none;
   border-style: none;
+  font-size: 0.8em;
 }
 button {
   width: 7em;
   height: 4em;
   border-radius: 20px;
+}
+textarea {
+    width: 40vw;
+    height: 10em;
+    border-radius: 20px;
+    outline: none;
+    resize: none;
+    border-style: none;
+    font-size: 0.8em;
+}
+.qualification {
+    display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    margin-bottom: 0.5em;
+}
+.spanRating {
+    display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-left: center;
+        width: 20vw;
+}
+.rating {
+    padding: 0.5em;
+}
+.addNewEmployer {
+    display: inline-block;
+    padding: 2em;
+    text-align: right;
+    &:hover {
+        cursor: pointer;
+    }
+}
+span {
+    cursor: pointer;
+    padding: 5px 10px 5px 10px ;
+}
+.markedRating {
+    padding: 4px 8px 4px 10px ;
+    border: solid black 1px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
 }
 .valid { border: solid green 2px}
 .invalid { border: solid red 2px}
