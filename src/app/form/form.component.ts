@@ -24,10 +24,10 @@ export class FormComponent implements OnInit {
     }
     listOfQualification: Qualification[] = [
         {language: 'JavaScript', rating: 0, isMarked: false},
-        {language: 'HTML5', rating: 0, isMarked: false },
-        {language: 'Angular', rating: 0, isMarked: false},
+        {language: 'HTML5', rating: 4, isMarked: false },
+        {language: 'Angular', rating: 5, isMarked: true},
         {language: 'React', rating: 0, isMarked: false},
-        {language: 'View', rating: 0, isMarked: false}
+        {language: 'Vue', rating: 0, isMarked: false}
     ];
 
     ratingValue: number[] = [1, 2, 3, 4, 5];
@@ -71,9 +71,9 @@ export class FormComponent implements OnInit {
             zipCode: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(4)]),
         }),
         description: new FormControl('', [Validators.required, Validators.minLength(20)]),
-        education: new FormControl(''),
+        education: new FormControl('', [Validators.required]),
         graduationYear: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(4)]),
-        qualification: new FormControl('', [Validators.required]),
+        qualification: new FormControl(''),
     });
 
     firstName: AbstractControl;
@@ -89,23 +89,6 @@ export class FormComponent implements OnInit {
       console.log('button valid working')
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

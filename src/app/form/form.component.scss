@@ -16,6 +16,7 @@ input {
   outline: none;
   border-style: none;
   font-size: 0.8em;
+  padding-left: 1em;
 }
 button {
   width: 7em;
@@ -30,6 +31,7 @@ textarea {
     resize: none;
     border-style: none;
     font-size: 0.8em;
+    padding-left: 1em;
 }
 .qualification {
     display: flex;

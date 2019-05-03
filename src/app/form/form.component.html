@@ -8,7 +8,7 @@
         >
     </label>
     <div class="errorMessage" *ngIf="(firstName.errors?.required || firstName.errors?.minlength) && firstName.touched">
-          skriv ett namn
+          Enter your name!
       </div>
     </div>
 
@@ -20,7 +20,7 @@
             >
         </label>
         <div class="errorMessage" *ngIf="(surname.errors?.required || surname.errors?.minlength) && surname.touched">
-            skriv ditt efternamn
+            Enter your surname!
         </div>
     </div>
 
@@ -33,7 +33,7 @@
             [class.invalid]="address.invalid && (address.touched || address.dirty)"
             >
             <div class="errorMessage" *ngIf="(address.errors?.required || address.errors?.minlength) && address.touched">
-                Skriv din adress!
+                Enter your address!
             </div>
         </label>
     </div>
@@ -45,8 +45,8 @@
             [class.invalid]="zipCode.invalid && (zipCode.touched || zipCode.dirty)"
             >
         </label>
-        <div class="errorMessage" *ngIf="(zipCode.errors?.required || zipCode.errors?.pattern) && zipCode.touched">
-            skriv en zipCode!
+        <div class="errorMessage" *ngIf="(zipCode.errors?.required || zipCode.errors?.pattern || zipCode.errors?.minlength) && zipCode.touched">
+            Enter a valid zipCode! yyyy
 
         </div>
     </div>
@@ -80,11 +80,11 @@
                 [class.invalid]="graduationYear.invalid && (graduationYear.touched || graduationYear.dirty)">
             </label>
         </div>
+    </div>
 
-        <div class="errorMessage" *ngIf="(graduationYear.errors?.required || graduationYear.errors?.length) && graduationYear.touched">
+        <div class="errorMessage" *ngIf="(graduationYear.errors?.required || graduationYear.errors?.minlength || graduationYear.errors?.pattern) && graduationYear.touched">
             Du måste skriva "yyyy"
         </div>
-    </div>
 
     <div>
         <label> <p>Qualification:</p>
@@ -112,4 +112,4 @@
 </div>
 
 
-<button [disabled]="!profileFormGroup.value" (click)="checkButton()">Next</button>
+<button [disabled]="profileFormGroup.invalid" (click)="checkButton()">Next</button>

@@ -7,20 +7,20 @@
     [class.valid]="employer.valid && (employer.touched || employer.dirty)"
     [class.invalid]="employer.invalid && (employer.touched || employer.dirty)">
     </label>
-    <div *ngIf="employer.touched">
+    <!-- <div *ngIf="employer.touched">
         meddelande
 
-    </div>
+    </div> -->
 
     <div class="startStopYear">
         <div class="">
             <label>Start year:
                 <input type="text" formControlName="startYear" placeholder="yyyy"
                 [class.valid]="startYear.valid && (startYear.touched || startYear.dirty)"
-                [class.invalid]="startYear.valid && (startYear.touched || startYear.dirty)">
+                [class.invalid]="startYear.invalid && (startYear.touched || startYear.dirty)">
             </label>
-            <div class="timeLap" *ngIf="(startYear.errors?.required || startYear.errors?.min || startYear.errors?.max) && startYear.touched">
-                Giltligt år tal från 2010
+            <div class="timeLap" *ngIf="(startYear.errors?.required || startYear.errors?.min || startYear.errors?.max || startYear.errors?.minlength || startYear.errors?.maxlength) && startYear.touched">
+                Enter a number between 1990-2019
             </div>
         </div>
 
@@ -29,10 +29,10 @@
             <label>Stop year:
                 <input type="text" formControlName="stopYear" placeholder="yyyy"
                 [class.valid]="stopYear.valid && (stopYear.touched || stopYear.dirty)"
-                [class.invalid]="stopYear.valid && (stopYear.touched || stopYear.dirty)">
+                [class.invalid]="stopYear.invalid && (stopYear.touched || stopYear.dirty)">
             </label>
-            <div class="timeLap" *ngIf="(stopYear.errors?.required || stopYear.errors?.min || stopYear.errors?.max) && stopYear.touched">
-                Giltligt år tal från 2035
+            <div class="timeLap" *ngIf="(stopYear.errors?.required || stopYear.errors?.minlength || stopYear.errors?.maxlength || stopYear.errors?.ageRangeValidator) && stopYear.touched">
+                Enter a number between 1990-2020
             </div>
         </div>
 

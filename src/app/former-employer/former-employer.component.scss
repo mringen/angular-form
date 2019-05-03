@@ -1,27 +1,32 @@
 label {
-display: flex;
-flex-direction: column;
-align-content: center;
-flex-wrap: wrap;
-margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+        // &last-child {
+        //     justify-content: flex-end;
+        // }
 }
 input {
-  width: 40vw;
-  height: 3em;
-  margin-top: 4px;
-  border-radius: 20px 20px;
-  outline: none;
-  border-style: none;
-  font-size: 0.8em;
+    width: 40vw;
+    height: 3em;
+    margin-top: 4px;
+    border-radius: 20px 20px;
+    outline: none;
+    border-style: none;
+    font-size: 1em;
+    padding-left: 1em;
 }
 .startStopYear {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     height: 7em;
 }
- .startStopYear input {
-    width: 10vw;
-    font-size: 0.8em;
+ .startStopYear label input {
+     width: 10vw;
+     font-size: 1em;
         &:first-child {
             margin-right: 2em;
         }
@@ -34,11 +39,14 @@ textarea {
     resize: none;
     border-style: none;
     margin-bottom: 2em;
-    font-size: 0.8em;
+    font-size: 1em;
+    padding-left: 1em;
 }
 .timeLap {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    font-size: 1em;
 }
 .valid { border: solid green 2px}
 .invalid { border: solid red 2px}
